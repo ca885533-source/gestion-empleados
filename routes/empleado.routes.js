@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 // Actualizar un empleado por su id
 router.put('/:id', async (req, res) => {
   try {
-    await Empleado.findByIdAndUpdate(req.params.id, req.body);
+    await Empleado.findByIdAndUpdate(req.params.id, req.body, { runValidators: true });
     res.json({ mensaje: 'Empleado actualizado' });
   } catch (error) {
     res.status(400).json({ error: error.message });
